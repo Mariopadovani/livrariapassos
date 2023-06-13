@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+*{
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: "Ubuntu", sans-serif;
+}
+
+body{
+    background-color: #a2a2a2;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+div#paralelo{
+    background: #00acd7;
+
+    width: 1000px;
+
+    height: 720px;
+
+    max-width: 70vw;
+
+    border-radius: 10px;
+
+    box-shadow: 5px 5px 15px;
+
+    transform: skew(6deg, 3deg); /*Modifica a inclinação do elemento em um plano 2D
+                                    Parametros: eixo x, eixo y, em graus */
+
+    position: absolute;
+
+    z-index: -1;
+}
+
+
+form{
+    background-color: aliceblue;
+
+    border-radius: 10px;
+
+    max-width: 500px;
+
+    padding: 50px 40px; /*O primeiro número simboliza os níveis superior e inferior, e o segundo número simboliza os níveis laterais
+    */
+    box-shadow: 5px 5px 15px;
+}
+
+#titulo{
+    text-align: center;
+
+    margin: 48px 0;
+
+    font-size: 36px ;
+
+    color:  black;
+}
+
+.container{
+    margin-bottom: 12px;
+
+    position: relative;
+
+
+}
+
+.container input{
+    width: 100%;
+
+    height: 70px;
+
+    border: none;
+
+    background-color: #ededed;
+    border-radius: 4px;
+    color: #333;
+
+    font-size: 18px; /*Tamanho da fonte*/
+
+    font-weight: 700; /*Aumenta a largura do contorno do texto*/
+
+    padding: 14px 60px 0 10px; /*Gera espaço ao redor do conteúdo do elemento (superior, direito, inferior e esquerdo) */
+    
+}
+
+label{
+    text-transform: uppercase; /*Deixa todas as letras em maiúsculo*/
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #9d9d9d;
+
+    position: absolute; /*Posiciona qualquer elemento de acordo com o elemento pai, deixando de fazer parte do fluxo comum do documento */
+
+    line-height: 70px;
+
+    top:0; /*Essas duas opcições só funcionam se possuirem a "posição absoluta" */
+    left: 20px;
+
+    user-select: none;
+    transition: 0.5s;
+
+}
+
+/* ~ = Quando ocorrer o foco no input, altere as propriedades do label. */
+.container input:focus ~ label,
+.container input:valid ~ label{
+    top: -16px;
+    left: 10px;
+    color: #00acd7;
+}
+
+#button{
+    display: block;
+
+    float: right;
+    width: 50%;
+    height: 70px;
+
+    margin: 40px auto;
+
+    background-color: #00acd7;
+    color: #fff;
+
+    font-size: 20px;
+
+    border: none;
+
+    border-radius: 30px;
+    
+    cursor: pointer;
+
+    transition: 0.3s linear;
+}
+
+#button:hover{
+    opacity: 0.85;
+}
+
+form a{
+    clear: both;
+
+    display: block;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    color: #555;
+
+    font-weight: 500;
+
+    margin-bottom: 8px;
+
+    text-transform: uppercase;
+}
+
+form a:hover{
+    color: #111;
+}
+
+@media only screen and (max-width: 510px){
+    div#paralelo{
+        display: none;
+    }
+}
