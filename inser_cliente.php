@@ -1,32 +1,39 @@
 <?php
-    include("conecta_20230505185624.php");
+include("conecta_20230505185624.php");
 
-        
-    //atribuindo valores dos campos a variaveis.
-    $nome = $_POST["nome"];
-    $sobrenome = $_POST["sobrenome"];
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
+// Atribuindo valores dos campos a variáveis.
+$nome = $_POST["nome"];
+$sobrenome = $_POST["sobrenome"];
+$email = $_POST["email"];
+$senha = $_POST["senha"];
 
-    //converte a senha para hash MD5, para que não seja armazenada em texto limpo no banco de dados.
-    //$senha = MD5($_POST["senha"]);
+// Verifica se o usuário já existe no banco de dados
+$verificaUsuario = $pdo->prepare("SELECT * FROM cliente WHERE email = :email");
+$verificaUsuario->bindValue(":email", $email);
+$verificaUsuario->execute();
 
-    //comando SQL.
-    $comando = $pdo -> prepare("INSERT INTO cliente(nome_cliente,sobrenome,email,senha) VALUES(:nome,:sobrenome,:email,:senha)");  
-    
-    //insere valores das variaveis no comando sql.
-    $comando->bindValue(":nome",$nome);    
-    $comando->bindValue(":sobrenome",$sobrenome);                                  
-    $comando->bindValue(":email",$email);                                  
-    $comando->bindValue(":senha", $senha);
+if ($verificaUsuario->rowCount() > 0) {
+    // Usuário já existe, redireciona para o root path
+    header("Location: index.php");
+    exit();
+}
 
-    //executa o comando SQL, ou seja, insere os dados no banco de dados.
-    $comando->execute();
+// Comando SQL para inserir os dados
+$comando = $pdo->prepare("INSERT INTO cliente(nome_cliente, sobrenome, email, senha) VALUES(:nome, :sobrenome, :email, :senha)");
 
-    //redireciona para a pagina informada.
-    header("Location:index.html");
+// Insere valores das variáveis no comando SQL
+$comando->bindValue(":nome", $nome);
+$comando->bindValue(":sobrenome", $sobrenome);
+$comando->bindValue(":email", $email);
+$comando->bindValue(":senha", $senha);
 
-    //Fecha declaração e conexão.
-    unset($comando);
-    unset($pdo);
+// Executa o comando SQL, ou seja, insere os dados no banco de dados
+$comando->execute();
+
+// Redireciona para a página informada
+header("Location: index.php");
+
+// Fecha declaração e conexão
+unset($comando);
+unset($pdo);
 ?>

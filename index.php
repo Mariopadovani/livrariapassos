@@ -9,16 +9,31 @@
 </head>
 <body>
    <header>
-    <a href="#" id="logo"> <h1>Literatura Alves </h1></a>
+    <a href="#" id="logo"> 
+        <?php
+            if(isset($_COOKIE['id'])){
+                echo "Bem vindo, ";
+                include 'get_user_name.php';
+            }else{
+                echo ' <h1>Literatura Alves </h1>';
+            }
+        ?>
+    </a>
 
-    <button id="openmenu">&#9776;</button> <!--Se transforma nas três bolinhas para menu-->
+    <button id="openmenu">&#9776;</button>
 
 
     <nav id="menu">
         <button id="closemenu">X</button>
         <a href="livros.php">Livros</a> 
         <a href="#">Mangas</a>
-        <a href="./login.html">Login</a>
+        <?php
+            if (isset($_COOKIE['id'])){
+                echo '<a href="./logout.php">Logout</a>';
+            } else {
+                echo '<a href="./login.php">Login</a>';
+            }
+        ?>
        </nav>
    </header>
    

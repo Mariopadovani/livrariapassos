@@ -1,6 +1,8 @@
 <?php
-include("conecta_20230505185624.php");
-
+if (isset($_COOKIE["id"])){
+  header("Location: index.php");
+} 
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
