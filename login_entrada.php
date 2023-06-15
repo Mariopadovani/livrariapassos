@@ -5,7 +5,7 @@ $email = $_POST["email"];
 $senha = $_POST["senha"];
 
 //comando sql.
-$comando = $pdo -> prepare("SELECT senha, FROM cliente; WHERE email = :email");  
+$comando = $pdo -> prepare("SELECT senha, FROM cliente WHERE email = :email");  
 
 //insere valores das variaveis no comando sql.
 $comando->bindValue(":email",$email);                                                         
