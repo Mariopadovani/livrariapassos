@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,43 +17,28 @@
     <nav id="menu">
         <button id="closemenu">X</button>
         <a href="#">Livros</a> 
-        <a href="#">Mangas</a>
-        <a href="./login.html">Login</a>
+        <a href="./login.php">Login</a>
        </nav>
    </header>
    
    <main>
-        <?php
-        include("conecta_20230505185624.php");
+   <?php
+    include("conecta_20230505185624.php");
 
-            $sql = 'SELECT * FROM livros';
-            if($res=mysqli_query($pdo, $sql)){
-                $nomeLivro = array();
-                $generoLivro = array();
-                $editoraLivro = array();
-                $anoPubli = array();
-                $i = 0;
-                while($reg=mysqli_fetch_assoc($res)){
-
-                    $nomeLivro[$i] = $reg['nome'];
-                    $generoLivro[$i] = $reg['genero'];
-                    $editoraLivro[$i] = $reg['editora'];
-                    $anoPubli[$i] = $reg['ano_publi'];
-                    ?>
-                    <div>
-                        <div>
-                            <label><?php echo $nomeLivro[$i];?></label>
-                </div>
-
-                    </div>
-
-                    <?php
-                        $i++
-                    
-                }
-            }
-
-        ?>
+    $sql = 'SELECT * FROM livros';
+    $stmt = $pdo->query($sql);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    foreach ($results as $result) {
+        echo '<div class="content-card' . $result['id_livro'] . '">';
+        echo 'imagem: ' . $result['imagem'] . '<br>';       
+        echo '<content>';
+        echo 'nome: ' . $result['nome'] . '<br>';
+        echo 'editora: ' . $result['editora'] . '<br>';
+        echo '</content>';
+        echo '</div>';
+    }
+    ?>
     <section></section>
    </main>
 
