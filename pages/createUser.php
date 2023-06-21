@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/style_cad.css">
 </head>
 <body>
-
     <div id="paralelo"></div>
 
     <div id="main">
@@ -37,7 +36,7 @@
                     <label>Senha</label>
                 </div>
                 <div class="container">
-                    <input type="senha" required name="confirm">
+                    <input type="password" required name="confirm">
                     <label>Confirmar senha</label>
                 </div>
             </fieldset>

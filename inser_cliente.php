@@ -14,7 +14,7 @@ $verificaUsuario->execute();
 
 if ($verificaUsuario->rowCount() > 0) {
     // Usuário já existe, redireciona para o root path
-    header("Location: index.php");
+    header("Location: login");
     exit();
 }
 
@@ -31,7 +31,7 @@ $comando->bindValue(":senha", $senha);
 $comando->execute();
 
 // Redireciona para a página informada
-header("Location: index.php");
+header("Location: login");
 
 // Fecha declaração e conexão
 unset($comando);

@@ -1,5 +1,6 @@
 <?php
 // echo $_COOKIE['id'];
 setcookie('id', '', time()-3600);
-header("Location: index.php");
+setcookie('admin', '', time()-3600);
+header("Location: /livrariapassos/");
 ?>

@@ -15,8 +15,8 @@
         echo '</content>';
         echo '</div>';
     }
-    ?>
+?>
     </main>
-    <?php
-        include_once 'footer.php';
-    ?>
+<?php
+    include_once 'footer.php';
+?>

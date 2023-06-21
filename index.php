@@ -1,17 +1,20 @@
 <?php
-    include_once 'header.php';
-?>
-   <main>
-        Principal
-    <section></section>
-   </main>
+include('Router.php');
+include('models/User.php');
+include('models/Book.php');
 
-   <aside>
-    Promoções
-   </aside>
+$router = new CreateRouter('/livrariapassos');
 
-   <footer>
-    Contato
-   </footer>
+$router->get('/', 'home.php');
+$router->get('/livro', 'book.php');
+$router->get('/cadastro', 'createUser.php');
+$router->get('/login', 'login.php');
+$router->get('/update', 'update.php');
+$router->get('/add', 'create.php');
 
-<?php include_once 'footer.php'?>
+
+$router->post('/book', 'book.php');
+$router->post('/updatebook', 'updateBook.php');
+
+
+$router->listen();
